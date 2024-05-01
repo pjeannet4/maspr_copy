@@ -40,5 +40,11 @@ To train a MASPR model using all the data:
 python train_maspr.py --task train --model_path <MODEL_PATH>
 ```
 
+## Making predictions with MASPR
+To predict the specificity for all A-domains in a given gene sequence:
+```
+python process_adomain.py -i <GENE_SEQUENCE>
+```
+
 ## Zero-shot prediction with MASPR
 MASPR can consider novel substrates during inference even if they were not in its training data. To enable this feature, add your desired substrates to the `sub_to_smiles` dictionary in `substrate_smiles.py`.
