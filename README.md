@@ -1,7 +1,7 @@
 ## MASPR
 Code for Modeling A-Domain Specificity using Protein Language Models paper.
 
-This repository is under active development. Some major TODOs include allowing users to generate their own training data for new A-domains, and batch processing at inference time.
+This repository is under active development. Some major TODOs include allowing users to generate their own training data for new A-domains, batch processing at inference time, and [RDKit visualization](https://www.rdkit.org/docs/GettingStartedInPython.html#generating-similarity-maps-using-fingerprints) of the interpretable specificity predictions.
 
 ## Installing Dependencies
 To use MASPR, you need to have [conda](https://conda.io/projects/conda/en/latest/user-guide/install/index.html) installed. Once you have conda installed, you will need the following packages:
@@ -41,4 +41,4 @@ python train_maspr.py --task train --model_path <MODEL_PATH>
 ```
 
 ## Zero-shot prediction with MASPR
-MASPR can consider novel substrates during inference even if they were were not in its training data. To enable this feature, add your desired substrates to the `sub_to_smiles` dictionary in `substrate_smiles.py`.
+MASPR can consider novel substrates during inference even if they were not in its training data. To enable this feature, add your desired substrates to the `sub_to_smiles` dictionary in `substrate_smiles.py`.
