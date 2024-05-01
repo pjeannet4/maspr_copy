@@ -45,6 +45,7 @@ To predict the specificity for all A-domains in a given gene sequence:
 ```
 python process_adomain.py -i <GENE_SEQUENCE>
 ```
+These are typically obtained from a source like [MiBiG](https://mibig.secondarymetabolites.org/) by clicking on a gene and clicking "Copy AA Sequence".
 
 ## Zero-shot prediction with MASPR
 MASPR can consider novel substrates during inference even if they were not in its training data. To enable this feature, add your desired substrates to the `sub_to_smiles` dictionary in `substrate_smiles.py`.
