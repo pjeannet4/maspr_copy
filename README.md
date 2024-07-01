@@ -1,7 +1,7 @@
 ## MASPR
 Code for Modeling A-Domain Specificity using Protein Language Models paper.
 
-This repository is under active development. Some major TODOs include allowing users to generate their own training data for new A-domains, batch processing at inference time, and [RDKit visualization](https://www.rdkit.org/docs/GettingStartedInPython.html#generating-similarity-maps-using-fingerprints) of the interpretable specificity predictions.
+This repository is under active development. Some major TODOs include allowing users to generate their own training data for new A-domains, batch processing at inference time.
 
 ## Installing Dependencies
 To use MASPR, you need to have [conda](https://conda.io/projects/conda/en/latest/user-guide/install/index.html) installed. Once you have conda installed, you will need the following packages:
