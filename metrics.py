@@ -124,7 +124,7 @@ def fingerprint_projection(preds, projector, truths=None, device='cuda'):
     returns: sorted predictions, and ground truths substrate labels.
     the substrates considered in ranking are the ones in label_to_featurization
     """
-    label_feats = torch.tensor([label_to_featurization[l] for l in all_labels]).float().to(device)
+    label_feats = torch.tensor(np.array([label_to_featurization[l] for l in all_labels])).float().to(device)
     label_projs = projector.embed_fpt(label_feats)
     label_to_proj = {l: p.detach().cpu().numpy() for l, p in zip(all_labels, label_projs)}
     pred_projs = projector.embed_fpt(preds).detach().cpu().numpy()

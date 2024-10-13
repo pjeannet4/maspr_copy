@@ -17,7 +17,7 @@ class ESMFeaturizer:
         self.max_len = 1000
 
         # generate sequences on cpu for now cause this is too big for my gpu
-        self.device = torch.device('cpu')
+        self.device = torch.device('cuda')
         self.model = self.model.to(self.device)
 
     def featurize(self, prot_seq: str):
@@ -28,6 +28,7 @@ class ESMFeaturizer:
         """
         prot_seq = prot_seq.upper()[:self.max_len]
         batch_labels, batch_strs, batch_tokens = self.batch_converter( [('sequence', prot_seq)] )
+        batch_tokens = batch_tokens.to(self.device)
         results = self.model(tokens=batch_tokens, repr_layers=[33])
         token_representations = results["representations"][33].detach()
         tokens = token_representations[0, 1:len(prot_seq) + 1]
@@ -43,11 +44,11 @@ class MASPR:
         fpt_len = len(label_to_featurization['Val'])
 
         # TODO: change this and esm encoder to gpu for release
-        self.device = torch.device('cpu')
+        self.device = torch.device('cuda')
         self.model = MorganPredictor(10, 1280, fingerprint_len=fpt_len)
 
         if model_file is None:
-            state_dict = torch.load('maspr_model.pt', map_location=torch.device('cpu'))
+            state_dict = torch.load('maspr_model.pt', map_location=torch.device('cuda'))
             self.model.load_state_dict(state_dict)
             self.model = self.model.to(self.device)
         else:
@@ -118,7 +119,8 @@ def main():
     adom_sequence = args.input
     labels = model.predict(adom_sequence)
 
-    print(f'Predicted adomain classes: {labels}')
+    # print(f'Predicted adomain classes: {labels}')
+    print(f'{labels}')
 
 if __name__ == '__main__':
     main()
