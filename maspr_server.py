@@ -1,5 +1,6 @@
 # maspr_server.py
 
+import platform
 import esm
 import numpy as np
 import torch
@@ -65,7 +66,7 @@ class MASPR:
 
         fpt_len = len(label_to_featurization['Val'])
 
-        self.device = torch.device('cuda')
+        self.device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
         self.model = MorganPredictor(10, 1280, fingerprint_len=fpt_len)
 
         state_dict = torch.load(model_file, map_location=self.device)
@@ -78,13 +79,19 @@ class MASPR:
         self.labels = list(label_to_featurization.keys())
         self.index_to_label = {idx: label for idx, label in enumerate(self.labels)}
 
+        # ./osx_aden_predict if on MacOS, else ./aden_predict
+        if platform.system() == 'Darwin':
+            self.aden_predict_bin = './osx_aden_predict'
+        else:
+            self.aden_predict_bin = './aden_predict'
+
     def extract_stachelhaus(self, sequence):
         """
         Calls the external 'aden_predict' binary to extract stachelhaus residues.
         """
         try:
             result = subprocess.run(
-                ['./aden_predict', 'stachelhaus-extract', '--query', sequence],
+                [self.aden_predict_bin, 'stachelhaus-extract', '--query', sequence],
                 capture_output=True,
                 text=True,
                 check=True
@@ -102,7 +109,7 @@ class MASPR:
         """
         try:
             result = subprocess.run(
-                ['./aden_predict', 'extract-sequence', '--query', sequence],
+                [self.aden_predict_bin, 'extract-sequence', '--query', sequence],
                 capture_output=True,
                 text=True,
                 check=True
