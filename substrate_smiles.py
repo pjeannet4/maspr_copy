@@ -115,7 +115,7 @@ sub_to_smiles = {
     'Hyv-d': 'CC(CO)C(C(=O)O)N',
     'Pip': 'C1CCNC(C1)C(=O)O',
     'Dht': 'CC(=C(C(=O)O)N)O',
- 'Pyr': 'C1=CC(=CN=C1)CC(C(=O)O)N',
+    'Pyr': 'C1=CC(=CN=C1)CC(C(=O)O)N',
     'Dec': 'CCCCCCCCC(C(=O)O)N',
     'omeTyr': 'COC1=CC=C(C=C1)CC(C(=O)O)N',
     'meGlu': 'CC(CC(=O)O)C(C(=O)O)N',
@@ -171,7 +171,7 @@ sub_to_smiles = {
     'alpha-hydroxy-isocaproic-acid': 'OC(C(O)CC(C)C)C(=O)O', # 2S-Hic
     'MeHOval': 'O=C(C(C)CC)C(=O)O', # 3-Methyl-2-oxovaleric acid
     '2-oxo-isovaleric-acid': 'O=C(C(C)C)C(=O)O',
-    'aoda': 'NC(CCCCCC(=O)CC)C(=O)O' # S-2-amino-8-oxodecanoic acid
+    'aoda': 'NC(CCCCCC(=O)CC)C(=O)O', # S-2-amino-8-oxodecanoic acid
     'mal': 'CC(=O)', # malonyl-CoA
     'ohmal': 'CC(O)',
     'ccmal': 'C=C', # double-bonded malonyl-CoA
