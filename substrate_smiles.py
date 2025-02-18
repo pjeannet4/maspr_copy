@@ -187,7 +187,7 @@ sub_to_smiles = {
     'emal': 'C(CC)C(=O)',
     'ohemal': 'C(CC)C(O)',
     'ccemal': 'C(CC)=C',
-    'redemal': 'C(CC)C'
+    'redemal': 'C(CC)C',
     'AHBA': 'C1=CC(=O)C(N)C=C1C(=O)O',
     'ohAHBA': 'C1=CC(O)C(N)C=C1C(=O)O',  # possible modification by a KR, consistent with PKS substrate modification naming
     'fatty_acid': 'C[*]C(=O)O',
